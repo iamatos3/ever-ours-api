@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+// const Schema = mongoose.Schema
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -10,10 +11,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // name: {
-  //   type: String,
-  //   required: true
-  // },
+  // rsvp: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Rsvp'
+  //   }
+  // ],
   token: String
 }, {
   timestamps: true,

@@ -30,7 +30,7 @@ const router = express.Router()
 // GET /events
 router.get('/events', requireToken, (req, res, next) => {
   Event.find()
-    // Responsd with status 200 and JSON of the events
+    // Responds with status 200 and JSON of the events
     .then(events => res.status(200).json({ events }))
     // If an error occurs, pass it to the handler
     .catch(next)
@@ -41,6 +41,7 @@ router.get('/events', requireToken, (req, res, next) => {
 router.get('/events/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Event.findById(req.params.id)
+    .populate('rsvp.owner')
     .then(handle404)
     // if `findById` is successful, respond with 200 and `event` JSON
     .then((event) => res.status(200).json({ event }))

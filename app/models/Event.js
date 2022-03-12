@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+// const Schema = mongoose.Schema
 
 // Events Schema
 const eventSchema = new mongoose.Schema(
@@ -19,18 +20,12 @@ const eventSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    // date: {
-    //   type: Date
-    //   // required: true
-    // },
-    // startTime: {
-    //   type: Date
-    //   // required: true
-    // },
-    // endTime: {
-    //   type: Date
-    //   // required: true
-    // },
+    // rsvp: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Rsvp'
+    //   }
+    // ],
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

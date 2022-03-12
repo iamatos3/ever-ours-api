@@ -10,7 +10,7 @@ const Example = require('../models/example')
 // to throw a custom error
 const customErrors = require('../../lib/custom_errors')
 
-// we'll use this function to send 404 when non-existant document is requested
+// we'll use this function to send 404 when non-existent document is requested
 const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
@@ -43,7 +43,7 @@ router.get('/examples/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Example.findById(req.params.id)
     .then(handle404)
-    // if `findById` is succesful, respond with 200 and "example" JSON
+    // if `findById` is successful, respond with 200 and "example" JSON
     .then(example => res.status(200).json({ example: example }))
     // if an error occurs, pass it to the handler
     .catch(next)
@@ -56,7 +56,7 @@ router.post('/examples', requireToken, (req, res, next) => {
   req.body.example.owner = req.user.id
 
   Example.create(req.body.example)
-    // respond to succesful `create` with status 201 and JSON of new "example"
+    // respond to successful `create` with status 201 and JSON of new "example"
     .then(example => {
       res.status(201).json({ example })
     })
@@ -90,7 +90,7 @@ router.patch('/examples/:id', requireToken, removeBlanks, (req, res, next) => {
 router.delete('/examples/:id', requireToken, (req, res, next) => {
   Example.findById(req.params.id)
     .then(handle404)
-     // ensure the signed in user (req.user.id) is the same as the example's owner (example.owner)
+    // ensure the signed in user (req.user.id) is the same as the example's owner (example.owner)
     .then(example => requireOwnership(req, example))
     // delete example from mongodb
     .then(example => example.deleteOne())

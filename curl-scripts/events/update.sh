@@ -13,7 +13,8 @@ curl "${API}${URL_PATH}/${ID}" \
       "title": "'"${TITLE}"'",
       "location": "'"${LOCATION}"'",
       "attire": "'"${ATTIRE}"'",
-      "capacity": "'"${CAPACITY}"'"
+      "capacity": "'"${CAPACITY}"'",
+      "rsvp": "'"${RSVP}"'"
     }
   }'
 
